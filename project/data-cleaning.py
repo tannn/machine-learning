@@ -1,7 +1,9 @@
 import re
 import pandas as pd
 
-df = pd.read_csv('first_half_retry.csv', delimiter=",")
+df = pd.read_csv('FILE', delimiter=",")
+deleted = 0
+count = 0
 
 for index, row in df.iterrows():
 	text = str(row['Text'])
@@ -18,8 +20,12 @@ for index, row in df.iterrows():
 	print(final)
 
 	if final == "nan" or not final:
-		df.drop(index)
+		df.drop(index, inplace=True)
+		deleted += 1
 	else:
 		df.at[index,'Text'] = final
+		count += 1
 
-df.to_csv("cleaned_first_half_retry.csv")
+df.to_csv("NEW FILE")
+print("deleted",deleted)
+print("changed",count)
