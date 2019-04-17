@@ -1,7 +1,9 @@
 import langid
 import pandas as pd
 
-df = pd.read_csv('second_half.csv', delimiter=",")
+df = pd.read_csv('FILE', delimiter=",")
+
+count = 0
 
 for index, row in df.iterrows():
 	text = row['Text']
@@ -12,5 +14,7 @@ for index, row in df.iterrows():
 		print(text)
 		print(language)
 		df.drop(index, inplace=True)
+		count += 1
 
-df.to_csv("cleaned_second_half.csv")
+df.to_csv("NEW FILE")
+print("deleted", count)
